@@ -1,0 +1,115 @@
+.form_container{
+    background-color: #fff;
+    padding: 10px;
+    width: 70%;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #919090;
+    text-align: initial;
+}
+.search_form{
+    display: inline-block;
+    margin: 0 0 0 auto;
+    width: calc(100% - 210px);
+    text-align: right;
+    vertical-align: 20px;
+}
+.form_container select{
+    border: none;
+}
+.form_select{
+    display: inline-block;
+}
+.form_select:after{
+    content: "|";
+    color: #dfdfdf;
+}
+.form_input{
+    display: inline-block;
+    width: calc(100% - 200px);
+}
+.form_input:before{
+    content:'';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/search.png');
+    background-size: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+    
+}
+.form_input input{
+    border: none;
+    width: calc(100% - 50px);
+}
+.main_container{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.shop_container{
+    width: calc(100% / 4 - 8px);;
+    height:400px;
+    margin: 0 10px 20px 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #919090;
+}
+.shop_container:nth-of-type(4n){
+    margin: 0;
+}
+.shop_image{
+    height: 200px;
+}
+.shop_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0
+}
+.shop_content{
+    padding: 20px;
+}
+.content_sentence{
+    height: 100px;
+}
+.shop_name{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.shop_area{
+    display: inline-block;
+}
+.shop_category{
+    display: inline-block;
+}
+.content_btn{
+    display: flex;
+    justify-content: space-around;
+}
+.content_btn form{
+    display: inline-block;
+    width: 40%;
+}
+.shop_detail{
+    background-color: #0059ff;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.shop_unfavorite{
+    background-image: url(../images/unfavorite.png);
+    background-size: cover;
+    background-color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    float: right;
+}
