@@ -31,7 +31,7 @@
     </div>
 </form>
 <div class="main_container">
-    @foreach($items as $item)
+    @foreach($shops as $item)
     <div class="shop_container">
         <div class="shop_image">
             <img src="{{ $item->image_path }}" alt="">
@@ -47,9 +47,19 @@
                     @csrf
                     <button type="submit" class="shop_detail">詳しく見る</button>
                 </form>
-                <form action="">
-                    <button type="submit" class="shop_unfavorite"></button>
-                </form>
+                @if(Auth::check())
+                    @if(isset($item->favorites[0]))
+                    <form action="/favorite/delete/{{ $item->favorites[0]->id }}" method="post">
+                        @csrf
+                        <button type="submit" class="shop_favorite"></button>
+                    </form>
+                    @else
+                    <form action="/favorite/{{ $item->id }}" method="post">
+                        @csrf
+                        <button type="submit" class="shop_unfavorite"></button>
+                    </form>
+                    @endif
+                @endif
             </div>
         </div>
     </div>

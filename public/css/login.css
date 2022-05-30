@@ -1,37 +1,37 @@
-.register_container{
+.login_container{
     background-color: #fff;
     margin: 150px auto 0;
     width: 50%;
-    height: 400px;
+    height: 300px;
     border-radius: 10px;
 }
-.register_ttl{
+.login_ttl{
     background-color: #0059ff;
     border-radius: 10px 10px 0 0;
     height: 30px;
     padding: 30px;
 }
-.register_ttl p{
+.login_ttl p{
     font-size: 24px;
     color: #fff;
 }
-.register_form{
+.login_form{
     padding: 30px;
 }
-.register_form img{
+.login_form img{
     width: 35px;
     padding: 5px;
     margin-bottom: 5px;
 }
-.register_form input{
+.login_form input{
     border: none;
     border-bottom: 1px solid #000;
     width: 80%;
     height:25px;
     vertical-align: 25px;
 }
-.register_btn{
-    width: 60px;
+.login_btn{
+    width: 80px;
     margin-top: 10px;
     padding: 5px;
     background-color: #0059ff;

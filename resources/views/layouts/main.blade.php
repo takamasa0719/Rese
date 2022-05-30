@@ -9,9 +9,42 @@
     <title>Rese</title>
 </head>
 <body>
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            @auth
+            <li>
+                <form action="/logout" method="post" name="logout" id="logout">
+                    @csrf
+                    <a href="javascript:logout.submit()">Logout</a>
+                </form>
+            </li>
+            <li>
+                <form action="/mypage" method="get" name="mypage" id="mypage">
+                    @csrf
+                    <a href="javascript:mypage.submit()">Mypage</a>
+                </form>
+            </li>
+            @endauth
+            @guest
+                <li>
+                <form action="/register" method="get" name="register" id="register">
+                    @csrf
+                    <a href="javascript:register.submit()">Register</a>
+                </form>
+                </li>
+                <li>
+                <form action="/login" method="get" name="login" id="login">
+                    @csrf
+                    <a href="javascript:login.submit()">Login</a>
+                </form>
+                </li>
+            @endguest
+        </ul>
+    </nav>
     <div class="container">
         <div class="header">
-            <div class="logo_mark">
+            <div class="logo_mark" id="logo_mark">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -20,5 +53,7 @@
         </div>
         @yield('content')
     </div>
+<script src="{{ asset('js/main.js') }}"></script>
+@yield('pageJs')
 </body>
 </html>

@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 @section('pageCss')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
 @section('content')
-<div class="register_container">
-    <div class="register_ttl">
-        <p>Registration</p>
+<div class="login_container">
+    <div class="login_ttl">
+        <p>Login</p>
     </div>
     @if ($errors->any())
         <div>
@@ -18,18 +18,14 @@
             </ul>
         </div>
     @endif
-    <div class="register_form">
-        <form action="/register" method="post">
+    <div class="login_form">
+        <form action="/login" method="post">
             @csrf
-            <img src="{{ asset('images/person.png') }}">
-            <input type="text" name="name" placeholder="Username"><br>
             <img src="{{ asset('images/mail.png') }}">
             <input type="email" name="email" placeholder="Email"><br>
             <img src="{{ asset('images/key.png') }}">
             <input type="password" name="password" placeholder="Password"><br>
-            <img src="{{ asset('images/key.png') }}">
-            <input type="password" name="password_confirmation" placeholder="Password Confirm"><br>
-            <button class="register_btn"type="submit">登録</button>
+            <button class="login_btn"type="submit">ログイン</button>
         </form>
     </div>
 </div>

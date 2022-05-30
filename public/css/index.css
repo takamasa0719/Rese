@@ -113,3 +113,13 @@
     cursor: pointer;
     float: right;
 }
+.shop_favorite{
+    background-image: url(../images/favorite.png);
+    background-size: cover;
+    background-color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    float: right;
+}

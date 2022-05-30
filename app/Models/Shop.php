@@ -9,11 +9,18 @@ class Shop extends Model
 {
     use HasFactory;
 
-    public function area(){
+    public function area()
+    {
         return $this->belongsTo('App\Models\Area');
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo('App\Models\Category');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }
