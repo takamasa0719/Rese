@@ -12,6 +12,6 @@ function inputTime(){
 
 function inputNumber(){
     const input = document.getElementById("number");
-    const str = input.value;
+    const str = input.value + '人';
     document.getElementById('numberOut').textContent = str;
 }

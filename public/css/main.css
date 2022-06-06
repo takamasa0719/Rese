@@ -21,6 +21,7 @@ body{
     background: #eee;
     transition: .7s;
     text-align: center;
+    z-index: 5;
 }
 .menu ul{
     padding-top: 80px;
@@ -41,6 +42,7 @@ body{
     box-shadow: 3px 3px 5px #919090; 
     display: inline-block;
     box-sizing: border-box;
+    z-index: 10;
 }
 .logo_mark div{
     position: absolute;

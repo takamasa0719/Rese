@@ -6,27 +6,27 @@
 
 @section('content')
 
-<form class="search_form" action="">
+<form class="search_form" id="search_form" onChange="get_data()">
     @csrf
     <div class="form_container">
         <div class="form_select">
             <select name="area">
-                <option value="0">All area</option>
+                <option value="">All area</option>
                 @foreach($areas as $area)
-                <option value="{{ $area->id}}">{{ $area->name }}</option>
+                <option value="{{ $area->id }}">{{ $area->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form_select">
             <select name="category">
-                <option value="0">All genre</option>
+                <option value="">All genre</option>
                 @foreach($categories as $category)
-                <option value="">{{ $category->name }}</option>
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form_input">
-            <input type="search" placeholder="Search...">
+            <input type="search" placeholder="Search..." name="keyword">
         </div>
     </div>
 </form>
@@ -65,4 +65,9 @@
     </div>
     @endforeach
 </div>
+@endsection
+
+@section('pageJs')
+<script src="{{ asset('js/index.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endsection

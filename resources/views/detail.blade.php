@@ -6,17 +6,21 @@
 
 @section('content')
 <div class="reservation_container">
-    <p>予約</p> 
-    <form action="/reserve/{{ $shops[0]->id }}">
+    <p class="reservation_ttl">予約</p> 
+    <form action="/reserve/{{ $shops[0]->id }}" method="post">
         @csrf
-        <input type="date" name="date" id="date" onChange="inputDate()"><br>
-        <input type="time" step="900" id="time" name="time"  onChange="inputTime()"><br>
-        <input type="number" step="1" id="number" name="number" min="1" max="20" placeholder="人数" onChange="inputNumber()">
+        <input type="date" class="form_date" name="date" id="date" onChange="inputDate()"><br>
+        <input type="time" class="form_time" step="900" id="time" name="time"  onChange="inputTime()"><br>
+        <input type="number" class="form_number" step="1" id="number" name="number" min="1" max="20" placeholder="人数" onChange="inputNumber()">
+        <button class="reservation_btn"type="submit">予約する</button>
     </form>
-    <div>
-        <p id="dateOut"></p>
-        <p id="timeOut"></p>
-        <p id="numberOut"></p>
+    <div class="reservation_info">
+        <span>Shop</span><p>{{ $shops[0]->name }}</p><br>
+        <span>Date</span><p id="dateOut"></p><br>
+        <span>Time</span><p id="timeOut"></p><br>
+        <span>Number</span><p id="numberOut"></p><br>
+    </div>
+    <div class="reservation_bottom">
     </div>
 </div>
 <div class="shop_container">

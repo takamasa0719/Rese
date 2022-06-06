@@ -10,16 +10,16 @@ class FavoriteController extends Controller
 {
     public function favorite(Request $request)
     {
-        $favorite = new Favorite;
-        $favorite->shop_id = $request->shop_id;
-        $favorite->user_id = Auth::id();
-        $favorite->save();
-        return redirect('/');
+        Favorite::create([
+            "shop_id" => $request->shop_id,
+            "user_id" => Auth::id(),
+        ]);
+        return back();
     }
 
     public function unfavorite(Request $request)
     {
-        Favorite::find($request->id)->delete();
-        return redirect('/');
+        Favorite::find($request->favorite_id)->delete();
+        return back();
     }
 }

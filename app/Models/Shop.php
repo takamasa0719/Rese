@@ -11,12 +11,12 @@ class Shop extends Model
 
     public function area()
     {
-        return $this->belongsTo('App\Models\Area');
+        return $this->belongsTo(Area::class);
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function favorites()
