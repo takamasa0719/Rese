@@ -12,15 +12,79 @@
         @foreach($reservations as $reservation)
         <div class="reservation_content">
             <img src="{{ asset('images/clock.png') }}">
-            <form action="/reserve/delete/{{ $reservation->id }}" method="post">
+            <form class="delete_form" action="/reserve/delete/{{ $reservation->id }}" method="post">
                 @csrf
                 <button type="submit" class="reservation_delete"></button>
-                </form>
+            </form>
             <p class="reservation_id">予約{{ $reservation->id }}</p><br>
-            <span>Shop</span><p>{{ $reservation->shop->name }}</p><br>
-            <span>Date</span><p>{{ $reservation->date }}</p><br>
-            <span>Time</span><p>{{ $reservation->time }}</p><br>
-            <span>Number</span><p class="reservation_number">{{ $reservation->number }}人</p><br>
+            <form class="update_form" action="/reserve/update/{{ $reservation->id }}" method="post">
+                @csrf
+                <input type="hidden" name="shop_id" value="{{ $reservation->shop_id }}">
+                <table>
+                    <tr>
+                        <th>Shop</th>
+                        <td><p class="reserve_shop">{{ $reservation->shop->name }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><input type="date" name="date" value="{{ $reservation->date}}"></td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td><input type="time" step="900" name="time" value="{{ substr($reservation->time, 0, 5) }}"></td>
+                    </tr>
+                    <tr>
+                        <th>number</th>
+                        <td><input type="number" name="number" value="{{ $reservation->number }}"></td>
+                    </tr>
+                </table>
+                <button class="update_btn" type="submit">予約変更</button>
+            </form>
+        </div>
+        @endforeach
+        <p class="reservation_ttl">終了した予約</p>
+        @foreach ($doneReservations as $doneReservation)
+        <div class="reservation_content">
+            <img src="{{ asset('images/clock.png') }}">
+            <form class="delete_form" action="/reserve/delete/{{ $reservation->id }}" method="post">
+                @csrf
+                <button type="submit" class="reservation_delete"></button>
+            </form>
+            <p class="reservation_id">予約{{ $doneReservation->id }}</p><br>
+                <table>
+                    <tr>
+                        <th>Shop</th>
+                        <td><p class="reserve_shop">{{ $doneReservation->shop->name }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><p>{{ $doneReservation->date }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td><p>{{ substr($doneReservation->time, 0, 5) }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>number</th>
+                        <td><p>{{  $doneReservation->number }}人</p></td>
+                    </tr>
+                </table>
+            <p>評価</p>
+            <form action="">
+                @csrf
+                <div class="review_rating">
+                    <input type="radio" id="rating1" name="rating" value="1" checked="checked">
+                    <label for="rating1">★</label>
+                    <input type="radio" id="rating2" name="rating" value="2">
+                    <label for="rating2">★</label>
+                    <input type="radio" id="rating3" name="rating" value="3">
+                    <label for="rating3">★</label>
+                    <input type="radio" id="rating4" name="rating" value="4">
+                    <label for="rating4">★</label>
+                    <input type="radio" id="rating5" name="rating" value="5">
+                    <label for="rating5">★</label>
+                </div>
+            </form>
         </div>
         @endforeach
     </div>

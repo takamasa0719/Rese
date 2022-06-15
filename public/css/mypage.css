@@ -27,14 +27,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 5px #919090;
     color: #fff;
+    margin-bottom: 20px;
 }
 .reservation_content img{
     width: 20px;
 }
-.reservation_content p{
-    display: inline-block;
-}
-.reservation_content form{
+.delete_form{
     display: inline-block;
     float: right;
 }
@@ -51,11 +49,58 @@
     margin-left: 20px !important;
 }
 .reservation_content p{
-    margin-bottom: 30px;
-    margin-left: 50px;
+    display: inline-block;
 }
-.reservation_number{
-    margin-left: 25px !important;
+.update_form{
+    width: 100%;
+}
+.reservation_content table{
+    text-align: left;
+    width: 100%;
+}
+.reservation_content th{
+    padding-bottom: 20px;
+    width: 30%;
+}
+.reservation_content td{
+    width: 70%;
+}
+.update_form input{
+    width: 80%;
+}
+.update_btn{
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: #0037ff;
+    color: #fff;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    width: 100px;
+    padding: 10px;
+}
+.reserve_shop{
+    margin-top: 30px;
+}
+.review_rating{
+    line-height: 1;
+    color: #fbff00;
+    font-size: 24px;
+}
+.review_rating input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.review_rating label{
+    display: inline-block;
+    cursor: pointer;
+}
+.review_rating input:focus + label{
+    outline: 1px solid currentColor;
+}
+.review_rating input:checked + label ~ label{
+    color: #fff;
 }
 .favorite_container{
     width: 50%;
@@ -126,8 +171,8 @@
     background-size: cover;
     background-color: #fff;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     float: right;
 }
@@ -136,8 +181,13 @@
     background-size: cover;
     background-color: #fff;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     float: right;
+}
+@media screen and (max-width: 769px) {
+    .shop_container{
+        width: 90%;
+    }
 }

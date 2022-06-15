@@ -13,12 +13,15 @@ class ShopController extends Controller
     public function index()
     {
         $user_id = Auth::id();
+        $area_id = '';
+        $keyword = '';
+        $category_id = '';
         $shops = Shop::with(['area', 'category','favorites' => function ($query) use ($user_id) {
-                $query->select(['id', 'shop_id'])->where('user_id', $user_id);
-            }])->get();
+            $query->select(['id', 'shop_id'])->where('user_id', $user_id);
+        }])->get();
         $areas = Area::all();
         $categories = Category::all();
-        return view('index', compact('shops', 'areas', 'categories'));
+        return view('index', compact('shops', 'areas', 'categories', 'area_id', 'category_id', 'keyword'));
     }
 
     public function detail(Request $request)
@@ -29,18 +32,18 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
-        $area = $request->input('area');
-        $category = $request->input('category');
+        $area_id = $request->input('area');
+        $category_id = $request->input('category');
         $keyword = $request->input('keyword');
 
         $query = Shop::query();
 
-        if(!empty($area)){
-            $query->where('area_id', $area);
+        if(!empty($area_id)){
+            $query->where('area_id', $area_id);
         }
         
-        if(!empty($category)){
-            $query->where('category_id', $category);
+        if(!empty($category_id)){
+            $query->where('category_id', $category_id);
         }
 
         if(!empty($keyword)){
@@ -48,7 +51,9 @@ class ShopController extends Controller
         }
 
         $shops = $query->get();
+        $areas = Area::all();
+        $categories = Category::all();
         
-        return response()->json($shops);
+        return view('index', compact('shops', 'areas', 'categories', 'area_id', 'category_id', 'keyword'));
     }
 }

@@ -6,14 +6,14 @@
 
 @section('content')
 
-<form class="search_form" id="search_form" onChange="get_data()">
+<form class="search_form" id="search_form" onChange="submit(this.form);" method="get" action="/search">
     @csrf
     <div class="form_container">
         <div class="form_select">
             <select name="area">
                 <option value="">All area</option>
                 @foreach($areas as $area)
-                <option value="{{ $area->id }}">{{ $area->name }}</option>
+                <option value="{{ $area->id }}" {{$area->id == $area_id ?? '' ? 'selected' : ''}}>{{ $area->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -21,12 +21,12 @@
             <select name="category">
                 <option value="">All genre</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}" {{$category->id == $category_id ?? '' ? 'selected' : ''}}>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form_input">
-            <input type="search" placeholder="Search..." name="keyword">
+            <input type="search" placeholder="Search..." name="keyword" value="{{ $keyword }}">
         </div>
     </div>
 </form>

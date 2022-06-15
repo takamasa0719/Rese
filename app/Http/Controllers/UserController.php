@@ -19,7 +19,14 @@ class UserController extends Controller
                 return $query;
             });
         })->get();
-        $reservations = Reservation::where('user_id', $user_id)->get();
-        return view('mypage', compact('shops', 'reservations'));
+        $reservations = Reservation::where([
+            ['user_id', $user_id],
+            ['date', '>', date('Y-m-d')],
+            ])->get();
+        $doneReservations = Reservation::where([
+            ['user_id', $user_id],
+            ['date', '<=', date('Y-m-d')]
+        ])->get();
+        return view('mypage', compact('shops', 'reservations', 'doneReservations'));
     }
 }

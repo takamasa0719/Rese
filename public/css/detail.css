@@ -113,3 +113,15 @@
     margin: auto;
     z-index: 5;
 }
+@media screen and (max-width:769px) {
+    .reservation_container{
+        float: none;
+        width: 80%;
+        position: absolute;
+        top: 800px;
+        height: 400px;
+    }
+    .shop_container{
+        width: 100%;
+    }
+}

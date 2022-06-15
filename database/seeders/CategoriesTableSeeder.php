@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -14,25 +15,28 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'name' => '寿司'
-        ];
-        DB::table('categories')->insert($param);
-        $param = [
-            'name' => '焼肉'
-        ];
-        DB::table('categories')->insert($param);
-        $param = [
-            'name' => '居酒屋'
-        ];
-        DB::table('categories')->insert($param);
-        $param = [
-            'name' => 'イタリアン'
-        ];
-        DB::table('categories')->insert($param);
-        $param = [
-            'name' => 'ラーメン'
-        ];
-        DB::table('categories')->insert($param);
+        $categories = 
+        [
+            [
+                'name' => '寿司'
+            ],
+            [
+                'name' => '焼肉'
+            ],
+            [
+                'name' => '居酒屋'
+            ]
+            ,[
+                'name' => 'イタリアン'
+            ],
+            [
+                'name' => 'ラーメン'
+            ],
+            ];
+
+            foreach ($categories as $category) 
+            {
+                Category::create($category);
+            }
     }
 }

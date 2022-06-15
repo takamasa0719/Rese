@@ -12,6 +12,7 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/done', [ReservationController::class, 'done']);
 
 Route::post('/reserve/{shop_id}', [ReservationController::class, 'reserve']);
+Route::post('/reserve/update/{reserve_id}', [ReservationController::class, 'update']);
 Route::post('/reserve/delete/{reserve_id}', [ReservationController::class, 'delete']);
 
 Route::get('/mypage', [UserController::class, 'mypage']);

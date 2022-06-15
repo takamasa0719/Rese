@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Area;
 
 class AreasTableSeeder extends Seeder
 {
@@ -14,17 +15,22 @@ class AreasTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'name' => '東京都'
+        $areas = 
+        [
+            [
+                'name' => '東京都'
+            ],
+            [
+                'name' => '大阪府'
+            ],
+            [
+                'name' => '福岡県'
+            ],
         ];
-        DB::table('areas')->insert($param);
-        $param = [
-            'name' => '大阪府'
-        ];
-        DB::table('areas')->insert($param);
-        $param = [
-            'name' => '福岡県'
-        ];
-        DB::table('areas')->insert($param);
+
+        foreach ($areas as $area)
+        {
+            Area::create($area);
+        }
     }
 }
