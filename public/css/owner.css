@@ -1,0 +1,78 @@
+.owner_name{
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 37.5%;
+    font-weight: bold;
+    display: inline-block;
+}
+.ownerPage_container{
+    display: flex;
+    justify-content: space-between;
+}
+.shop_container{
+    width: 50%;
+    margin-top: 20px;
+}
+.shop_ttl{
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+.shop_content{
+    background-color: #0059ff;
+    padding: 20px;
+    color: #fff;
+    border-radius: 5px;
+}
+.add_ttl{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.shop_until{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.shopAdd_form{
+    width: 100%;
+}
+.shopAdd_form form{
+    width: 100%;
+}
+.shopAdd_form form input, select, textarea{
+    margin-bottom: 10px;
+    width: 100%;
+}
+.shopAdd_form form textarea{
+    resize: none;
+}
+.add_btn{
+    width: 80px;
+    display: block;
+    padding: 5px;
+    background-color: #0037ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.reservation_container{
+    width: 40%;
+    padding: 20px;
+}
+.reservation_content{
+    background-color: #0059ff;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    text-align: left;
+    margin: 40px 0 20px;
+}
+.reservation_ttl{
+    font-size: 24px;
+}
+.reservation_content table{
+    width: 100%;
+}

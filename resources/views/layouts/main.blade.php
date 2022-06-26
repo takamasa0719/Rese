@@ -25,6 +25,22 @@
                     <a href="javascript:mypage.submit()">Mypage</a>
                 </form>
             </li>
+            @if(auth()->user()->role === 1)
+            <li>
+                <form action="/admin" method="get" name="admin" id="admin">
+                    @csrf
+                    <a href="javascript:admin.submit()">Admin</a>
+                </form>
+            </li>
+            @endif
+            @if(auth()->user()->role === 2)
+            <li>
+                <form action="/owner" method="get" name="owner" id="owner">
+                    @csrf
+                    <a href="javascript:owner.submit()">Owner</a>
+                </form>
+            </li>
+            @endif
             @endauth
             @guest
                 <li>

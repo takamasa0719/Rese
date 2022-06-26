@@ -21,6 +21,7 @@
     <div class="register_form">
         <form action="/register" method="post">
             @csrf
+            <input type="hidden" name="role" value=3>
             <img src="{{ asset('images/person.png') }}">
             <input type="text" name="name" placeholder="Username"><br>
             <img src="{{ asset('images/mail.png') }}">

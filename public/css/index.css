@@ -125,16 +125,19 @@
 }
 @media screen and (max-width: 769px){
     .shop_container{
-        width: 80%;
-        margin: 0 0 10px 0;
+        width: 100%;
+        margin: 20px 0 10px 0;
     }
     .shop_container:nth-of-type(4n){
-        margin: 0 0 10px 0;
+        margin: 20px 0 10px 0;
     }
     .search_form{
         display: block;
         width: 100%;
-        text-align: left;
-        margin: 0;
+        margin: 20px 0 ;
+        text-align: center;
+    }
+    .form_container{
+        width: 90%;
     }
 }

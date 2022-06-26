@@ -15,8 +15,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = 
-        [
+        $categories = [
             [
                 'name' => '寿司'
             ],
@@ -25,18 +24,17 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'name' => '居酒屋'
-            ]
-            ,[
+            ],
+            [
                 'name' => 'イタリアン'
             ],
             [
                 'name' => 'ラーメン'
             ],
-            ];
+        ];
 
-            foreach ($categories as $category) 
-            {
-                Category::create($category);
-            }
+        foreach ($categories as $category) {
+            Category::create($category);
+        }
     }
 }

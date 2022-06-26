@@ -39,6 +39,7 @@
     border: none;
     border-radius: 5px;
     float: right;
+    cursor: pointer;
 }
 @media screen and (max-width:769px) {
     .login_form img{
@@ -48,6 +49,12 @@
         padding: 30px 20px;
     }
     .login_container{
-        width: 70%;
+        width: 100%;
+    }
+    .login_btn{
+        width: 90%;
+        float: none;
+        margin: 10px auto;
+        display: block;
     }
 }

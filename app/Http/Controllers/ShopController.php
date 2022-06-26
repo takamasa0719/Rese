@@ -56,4 +56,32 @@ class ShopController extends Controller
         
         return view('index', compact('shops', 'areas', 'categories', 'area_id', 'category_id', 'keyword'));
     }
+
+    public function add(Request $request)
+    {
+        Shop::create([
+            "area_id" => $request->area_id,
+            "category_id" => $request->category_id,
+            "owner_id" => Auth::id(),
+            "name" => $request->name,
+            "overview" => $request->overview,
+            "image_path" => $request->image_path,
+        ]);
+
+        return back();
+    }
+
+    public function update(Request $request)
+    {
+        Shop::where('id', $request->shop_id)->update([
+            "area_id" => $request->area_id,
+            "category_id" => $request->category_id,
+            "owner_id" => Auth::id(),
+            "name" => $request->name,
+            "overview" => $request->overview,
+            "image_path" => $request->image_path,
+        ]);
+
+        return back();
+    }
 }

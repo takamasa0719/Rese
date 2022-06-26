@@ -15,8 +15,7 @@ class AreasTableSeeder extends Seeder
      */
     public function run()
     {
-        $areas = 
-        [
+        $areas = [
             [
                 'name' => '東京都'
             ],
@@ -28,8 +27,7 @@ class AreasTableSeeder extends Seeder
             ],
         ];
 
-        foreach ($areas as $area)
-        {
+        foreach ($areas as $area) {
             Area::create($area);
         }
     }

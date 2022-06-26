@@ -1,0 +1,94 @@
+.adminPage_container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.admin_name{
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 37.5%;
+    font-weight: bold;
+    display: inline-block;
+}
+.ownerList_container{
+    width: 45%;
+    padding: 20px;
+}
+.ownerList_ttl{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.owner_container{
+    padding: 20px;
+    border-top: 1px solid #fff;
+    color: #fff;
+    margin-bottom: 10px;
+    width: 80%;
+    background-color: #0059ff;
+    position: relative;
+    border-radius: 5px;
+}
+.owner_container table{
+    width: 100%;
+    text-align: left;
+}
+.owner_container th{
+    width: 50%;
+}
+.owner_delete{
+    background-image: url(../images/cross.png);
+    background-size: cover;
+    background-color: #0059ff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+
+.ownerAdd_container{
+    background-color: #fff;
+    width: 50%;
+    height: 350px;
+    border-radius: 10px;
+}
+.ownerAdd_ttl{
+    background-color: #0059ff;
+    border-radius: 10px 10px 0 0;
+    height: 30px;
+    padding: 30px;
+}
+.ownerAdd_ttl p{
+    font-size: 24px;
+    color: #fff;
+}
+.register_form{
+    padding: 30px;
+}
+.register_form img{
+    width: 35px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.register_form input{
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 75%;
+    height:25px;
+    vertical-align: 25px;
+}
+.register_btn{
+    width: 60px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #0059ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+}

@@ -44,48 +44,98 @@
         @endforeach
         <p class="reservation_ttl">終了した予約</p>
         @foreach ($doneReservations as $doneReservation)
+        @if(isset($doneReservation->reviews[0]))
         <div class="reservation_content">
             <img src="{{ asset('images/clock.png') }}">
-            <form class="delete_form" action="/reserve/delete/{{ $reservation->id }}" method="post">
+            <form class="delete_form" action="/reserve/delete/{{ $doneReservation->reservations[0]->id }}" method="post">
                 @csrf
                 <button type="submit" class="reservation_delete"></button>
             </form>
-            <p class="reservation_id">予約{{ $doneReservation->id }}</p><br>
+            <p class="reservation_id">予約{{ $doneReservation->reservations[0]->id }}</p><br>
                 <table>
                     <tr>
                         <th>Shop</th>
-                        <td><p class="reserve_shop">{{ $doneReservation->shop->name }}</p></td>
+                        <td><p class="reserve_shop">{{ $doneReservation->name }}</p></td>
                     </tr>
                     <tr>
                         <th>Date</th>
-                        <td><p>{{ $doneReservation->date }}</p></td>
+                        <td><p>{{ $doneReservation->reservations[0]->date }}</p></td>
                     </tr>
                     <tr>
                         <th>Time</th>
-                        <td><p>{{ substr($doneReservation->time, 0, 5) }}</p></td>
+                        <td><p>{{ substr($doneReservation->reservations[0]->time, 0, 5) }}</p></td>
                     </tr>
                     <tr>
                         <th>number</th>
-                        <td><p>{{  $doneReservation->number }}人</p></td>
+                        <td><p>{{  $doneReservation->reservations[0]->number }}人</p></td>
                     </tr>
                 </table>
-            <p>評価</p>
-            <form action="">
+            <p>評価(済)</p>
+            <form action="/review/update/{{  $doneReservation->reviews[0]->id }}" method="post">
                 @csrf
+                <input type="hidden" name="shop_id" value="{{ $doneReservation->id }}">
                 <div class="review_rating">
-                    <input type="radio" id="rating1" name="rating" value="1" checked="checked">
-                    <label for="rating1">★</label>
-                    <input type="radio" id="rating2" name="rating" value="2">
-                    <label for="rating2">★</label>
-                    <input type="radio" id="rating3" name="rating" value="3">
-                    <label for="rating3">★</label>
-                    <input type="radio" id="rating4" name="rating" value="4">
-                    <label for="rating4">★</label>
-                    <input type="radio" id="rating5" name="rating" value="5">
-                    <label for="rating5">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating1" name="rating" value="1" {{ $doneReservation->reviews[0]->rating == 1 ? "checked" : "" }}>
+                    <label for="{{ $doneReservation->id }}rating1">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating2" name="rating" value="2" {{ $doneReservation->reviews[0]->rating == 2 ? "checked" : "" }}>
+                    <label for="{{ $doneReservation->id }}rating2">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating3" name="rating" value="3" {{ $doneReservation->reviews[0]->rating == 3 ? "checked" : "" }}>
+                    <label for="{{ $doneReservation->id }}rating3">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating4" name="rating" value="4" {{ $doneReservation->reviews[0]->rating == 4 ? "checked" : "" }}>
+                    <label for="{{ $doneReservation->id }}rating4">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating5" name="rating" value="5" {{ $doneReservation->reviews[0]->rating == 5 ? "checked" : "" }}>
+                    <label for="{{ $doneReservation->id }}rating5">★</label>
                 </div>
+                <textarea name="review" class="review_input" placeholder="レビューを記入して下さい" cols="30" rows="5">{{ $doneReservation->reviews[0]->review }}</textarea>
+                <button class="review_btn"type="submit">評価を更新</button>
             </form>
         </div>
+        @else
+        <div class="reservation_content">
+            <img src="{{ asset('images/clock.png') }}">
+            <form class="delete_form" action="/reserve/delete/{{ $doneReservation->reservations[0]->id }}" method="post">
+                @csrf
+                <button type="submit" class="reservation_delete"></button>
+            </form>
+            <p class="reservation_id">予約{{ $doneReservation->reservations[0]->id }}</p><br>
+                <table>
+                    <tr>
+                        <th>Shop</th>
+                        <td><p class="reserve_shop">{{ $doneReservation->name }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><p>{{ $doneReservation->reservations[0]->date }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td><p>{{ substr($doneReservation->reservations[0]->time, 0, 5) }}</p></td>
+                    </tr>
+                    <tr>
+                        <th>number</th>
+                        <td><p>{{  $doneReservation->reservations[0]->number }}人</p></td>
+                    </tr>
+                </table>
+            <p>評価(未)</p>
+            <form action="/review/{{  $doneReservation->id }}" method="post">
+                @csrf
+                <div class="review_rating">
+                    <input type="radio" id="{{ $doneReservation->id }}rating1" name="rating" value="1" checked="checked">
+                    <label for="{{ $doneReservation->id }}rating1">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating2" name="rating" value="2">
+                    <label for="{{ $doneReservation->id }}rating2">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating3" name="rating" value="3">
+                    <label for="{{ $doneReservation->id }}rating3">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating4" name="rating" value="4">
+                    <label for="{{ $doneReservation->id }}rating4">★</label>
+                    <input type="radio" id="{{ $doneReservation->id }}rating5" name="rating" value="5">
+                    <label for="{{ $doneReservation->id }}rating5">★</label>
+                </div>
+                <textarea name="review" class="review_input" placeholder="レビューを記入して下さい" cols="30" rows="5"></textarea>
+                <button class="review_btn"type="submit">評価を登録</button>
+            </form>
+        </div>
+        @endif
         @endforeach
     </div>
     <div class="favorite_container">

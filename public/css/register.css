@@ -39,15 +39,22 @@
     border: none;
     border-radius: 5px;
     float: right;
+    cursor: pointer;
 }
 @media screen and (max-width:769px){
     .register_container{
-        width: 70%;
+        width: 100%;
     }
     .register_form{
         padding: 30px 20px;
     }
     .register_form img{
         width: 20px;
+    }
+    .register_btn{
+        width: 90%;
+        float: none;
+        margin: 10px auto;
+        display: block;
     }
 }

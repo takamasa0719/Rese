@@ -9,6 +9,16 @@ class Shop extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        'area_id',
+        'category_id',
+        'owner_id',
+        'name',
+        'overview',
+        'image_path',
+    ];
+
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -22,5 +32,15 @@ class Shop extends Model
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
