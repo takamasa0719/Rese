@@ -13,7 +13,7 @@
         @if(isset($shop))
         <div class="shopAdd_form">
             <p class="add_ttl">店舗情報を編集</p>
-            <form action="/shop/update/{{ $shop->id }}" method="post">
+            <form action="/shop/update/{{ $shop->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="name" placeholder="店舗名" value="{{ $shop->name }}"><br>
                 <select name="area_id">
@@ -29,7 +29,7 @@
                     @endforeach
                 </select><br>
                 <textarea name="overview" cols="30" rows="5" placeholder="店舗詳細">{{ $shop->overview }}</textarea>
-                <input type="text" name="image_path" placeholder="image_path" value="{{ $shop->image_path}}">
+                <input type="file" name="image_path" accept=".jpg, .png" value="{{ $shop->image_path}}" required>
                 <button class="add_btn"type="submit">更新</button>
             </form>
         </div>
@@ -37,7 +37,7 @@
         <p class="shop_until">店舗が登録されていません</p>
             <div class="shopAdd_form">
                 <p class="add_ttl">店舗情報を登録</p>
-                <form action="/shop/add" method="post">
+                <form action="/shop/add" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="name" placeholder="店舗名"><br>
                     <select name="area_id">
@@ -53,7 +53,7 @@
                         @endforeach
                     </select><br>
                     <textarea name="overview" cols="30" rows="5" placeholder="店舗詳細"></textarea>
-                    <input type="text" name="image_path" placeholder="image_path">
+                    <input type="file" name="image_path">
                     <button class="add_btn"type="submit">登録</button>
                 </form>
             </div>

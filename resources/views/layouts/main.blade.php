@@ -19,12 +19,14 @@
                     <a href="javascript:logout.submit()">Logout</a>
                 </form>
             </li>
+            @if(auth()->user()->role === 3)
             <li>
                 <form action="/mypage" method="get" name="mypage" id="mypage">
                     @csrf
                     <a href="javascript:mypage.submit()">Mypage</a>
                 </form>
             </li>
+            @endif
             @if(auth()->user()->role === 1)
             <li>
                 <form action="/admin" method="get" name="admin" id="admin">

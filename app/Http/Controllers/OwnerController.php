@@ -18,9 +18,14 @@ class OwnerController extends Controller
         $owner_id = Auth::id();
         $shop_id = Shop::where('owner_id', $owner_id)->first(['id']);
         $shop = Shop::where('owner_id', $owner_id)->first();
-        $reservations = Reservation::with(['user', 'shop' => function ($query) use ($owner_id) {
-            $query->where('owner_id', $owner_id);
-        }])->where('shop_id', $shop_id->id)->get();
+
+        if(isset($shop)){
+            $reservations = Reservation::with(['user', 'shop' => function ($query) use ($owner_id) {
+                $query->where('owner_id', $owner_id);
+            }])->where('shop_id', $shop_id->id)->get();
+        }else{
+            $reservations = [];
+        };
         $areas = Area::all();
         $categories = Category::all();
 

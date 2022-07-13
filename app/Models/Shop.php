@@ -43,4 +43,9 @@ class Shop extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function courses()
+    {
+        return $this->hasOne(Courses::class);
+    }
 }

@@ -34,7 +34,7 @@
     @foreach($shops as $item)
     <div class="shop_container">
         <div class="shop_image">
-            <img src="{{ $item->image_path }}" alt="">
+            <img src="{{ asset('storage/images/' . $item->image_path) }}" alt="">
         </div>
         <div class="shop_content">
             <div class="content_sentence">
@@ -47,7 +47,7 @@
                     @csrf
                     <button type="submit" class="shop_detail">詳しく見る</button>
                 </form>
-                @if(Auth::check())
+                @if(Auth::check() && auth()->user()->role === 3)
                     @if(isset($item->favorites[0]))
                     <form action="/favorite/delete/{{ $item->favorites[0]->id }}" method="post">
                         @csrf

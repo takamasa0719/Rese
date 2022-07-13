@@ -1,0 +1,30 @@
+.payment_container{
+    margin-top: 30px;
+}
+.payment_container p{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.payment_info{
+    background-color: #0059ff;
+    border-radius: 5px;
+    padding: 20px;
+    color: #fff;
+    font-size: 20px;
+    text-align: left;
+}
+.payment_info table{
+    width: 100%;
+}
+.payment_info th{
+    width: 30%;
+    padding-bottom: 10px;
+}
+.payment_info td{
+    width: 60%;
+}
+.payment_info form{
+    display: block;
+    margin:  10px auto 0;
+    width: 100px;
+}

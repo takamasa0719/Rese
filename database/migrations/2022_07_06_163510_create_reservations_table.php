@@ -17,10 +17,12 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('shop_id')->constrained('shops');
+            $table->foreignId('course_id')->constrained('courses');
             $table->unique(['user_id', 'shop_id'], 'unique_user_id_shop_id');
             $table->date('date');
             $table->time('time');
             $table->tinyInteger('number');
+            $table->boolean('visited')->default(false);
             $table->timestamps();
         });
     }

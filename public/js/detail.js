@@ -15,3 +15,11 @@ function inputNumber(){
     const str = input.value + '人';
     document.getElementById('numberOut').textContent = str;
 }
+
+function inputCourse(){
+    const input = document.getElementById("course");
+    const num = input.selectedIndex;
+    const str = input.options[num].textContent;
+    document.getElementById('courseOut').textContent = str;
+}
+

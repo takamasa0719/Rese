@@ -38,6 +38,7 @@
                         <td><input type="number" name="number" value="{{ $reservation->number }}"></td>
                     </tr>
                 </table>
+                {!! QrCode::size(100)->generate(url('/reserve/check/' .$reservation->id)) !!}
                 <button class="update_btn" type="submit">予約変更</button>
             </form>
         </div>

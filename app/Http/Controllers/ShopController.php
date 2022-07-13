@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\models\Shop;
 use App\models\Area;
 use App\models\Category;
+use App\models\Course;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -26,8 +28,9 @@ class ShopController extends Controller
 
     public function detail(Request $request)
     {
-        $shops = Shop::with(['area', 'category'])->where('id', $request->shop_id)->get();
-        return view('detail', compact('shops'));
+        $shops = Shop::with(['area', 'category',])->where('id', $request->shop_id)->get();
+        $courses = Course::where('shop_id', $request->shop_id)->get();
+        return view('detail', compact('shops', 'courses'));
     }
 
     public function search(Request $request)
@@ -65,8 +68,10 @@ class ShopController extends Controller
             "owner_id" => Auth::id(),
             "name" => $request->name,
             "overview" => $request->overview,
-            "image_path" => $request->image_path,
+            "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
+
+        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
 
         return back();
     }
@@ -79,8 +84,10 @@ class ShopController extends Controller
             "owner_id" => Auth::id(),
             "name" => $request->name,
             "overview" => $request->overview,
-            "image_path" => $request->image_path,
+            "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
+
+        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
 
         return back();
     }
