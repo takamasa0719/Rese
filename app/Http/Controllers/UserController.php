@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Shop;
-use App\models\User;
-use App\models\Reservation;
+use App\Models\Shop;
+use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

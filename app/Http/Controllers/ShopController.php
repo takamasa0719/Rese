@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Shop;
-use App\models\Area;
-use App\models\Category;
-use App\models\Course;
+use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 

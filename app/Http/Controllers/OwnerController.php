@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\User;
-use App\models\Shop;
+use App\Models\User;
+use App\Models\Shop;
 use App\Models\Reservation;
-use App\models\Area;
-use App\models\Category;
+use App\Models\Area;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 

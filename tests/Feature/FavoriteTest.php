@@ -46,7 +46,7 @@ class FavoriteTest extends TestCase
             "shop_id" => 1,
         ];
         $response = $this->assertDatabaseMissing('favorites', $data);
-        $response = $this->post('/favorite/1', $data);
+        $response = $this->post("/favorite/$data[shop_id]", $data);
 
         $response->assertStatus(302);
         $response = $this->assertDatabaseHas('favorites', $data);
