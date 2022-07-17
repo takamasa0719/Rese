@@ -25,12 +25,12 @@ class UserController extends Controller
         })->get();
         $reservations = Reservation::where([
             ['user_id', $user_id],
-            ['date', '>', date('Y-m-d')],
+            ['visited', false],
             ])->get();
         $doneReservations = Shop::with(['reviews', 'reservations' => function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
         }])->whereHas('reservations', function($query){
-            $query->where('date', '<=', date('Y-m-d'));
+            $query->where('visited', true);
         })->get();
         return view('mypage', compact('shops', 'reservations', 'doneReservations'));
     }

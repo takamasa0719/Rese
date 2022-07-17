@@ -40,11 +40,22 @@ class ReservationController extends Controller
         return back();
     }
 
+    public function confirm(Request $request)
+    {
+        $reservation = Reservation::where('id', $request->reserve_id)->first();
+
+        $reservation_id = $request->reserve_id;
+
+        return view('check', compact(['reservation', 'reservation_id']));
+    }
+
     public function check(Request $request)
     {
         Reservation::where('id', $request->reserve_id)->update([
             "visited" => true,
         ]);
+        
+        return redirect('/');
     }
 
     public function delete(Request $request)

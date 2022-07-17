@@ -18,12 +18,14 @@ Route::get('/thanks', [ThanksController::class, 'thanks']);
 
 Route::get('/search', [ShopController::class, 'search']);
 
+Route::post('/reserve/check/{reserve_id}', [ReservationController::class, 'check']);
+
 Route::group(['middleware' => ['auth', 'can:general', 'verified']], function(){
     Route::get('/reserve', [ReservationController::class, 'reserve']);
     Route::post('/reserve/payment', [PaymentController::class, 'payment']);
     Route::post('/reserve/update/{reserve_id}', [ReservationController::class, 'update']);
     Route::post('/reserve/delete/{reserve_id}', [ReservationController::class, 'delete']);
-    Route::post('/reserve/check/{reserve_id}', [ReservationController::class, 'check']);
+    Route::get('/reserve/check/{reserve_id}', [ReservationController::class, 'confirm']);
     Route::get('/done', [ReservationController::class, 'done']);
 
     Route::get('/mypage', [UserController::class, 'mypage']);
