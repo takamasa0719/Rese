@@ -45,7 +45,7 @@
             <div class="content_btn">
                 <form action="/detail/{{ $item->id }}" method="get">
                     @csrf
-                    <button type="submit" class="shop_detail">詳しくa見る</button>
+                    <button type="submit" class="shop_detail">詳しく見る</button>
                 </form>
                 @if(Auth::check() && auth()->user()->role === 3)
                     @if(isset($item->favorites[0]))
