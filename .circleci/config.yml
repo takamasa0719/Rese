@@ -20,6 +20,8 @@ jobs:
  
       - run: sudo apt update
       - run: sudo docker-php-ext-install pdo_mysql
+      - run: yum install php-bcmath
+      - run: yum install php-gd
  
       - restore_cache:
           keys:
