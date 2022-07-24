@@ -18,8 +18,6 @@ Route::get('/thanks', [ThanksController::class, 'thanks']);
 
 Route::get('/search', [ShopController::class, 'search']);
 
-Route::post('/reserve/check/{reserve_id}', [ReservationController::class, 'check']);
-
 Route::group(['middleware' => ['auth', 'can:general', 'verified']], function(){
     Route::get('/reserve', [ReservationController::class, 'reserve']);
     Route::post('/reserve/payment', [PaymentController::class, 'payment']);
@@ -48,5 +46,6 @@ Route::group(['middleware' => ['auth', 'can:owner']], function(){
     Route::get('/owner', [OwnerController::class, 'index']);
     Route::post('/shop/add', [ShopController::class, 'add']);
     Route::post('/shop/update/{shop_id}', [ShopController::class, 'update']);
+    Route::post('/reserve/check/{reserve_id}', [ReservationController::class, 'check']);
 });
 

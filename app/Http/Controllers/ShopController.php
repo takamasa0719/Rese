@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Cloudinary;
 
 class ShopController extends Controller
 {
@@ -62,32 +63,32 @@ class ShopController extends Controller
 
     public function add(Request $request)
     {
+        $uploadedFileUrl = Cloudinary::upload($request->file('image_path')->getRealPath(), ['folder' => 'rese', 'unique_filename' => false,])->getSecurePath();
+
         Shop::create([
             "area_id" => $request->area_id,
             "category_id" => $request->category_id,
             "owner_id" => Auth::id(),
             "name" => $request->name,
             "overview" => $request->overview,
-            "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
+            "image_path" => $uploadedFileUrl,
         ]);
-
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
 
         return back();
     }
 
     public function update(Request $request)
     {
+        $uploadedFileUrl = Cloudinary::upload($request->file('image_path')->getRealPath(), ['folder' => 'rese', 'unique_filename' => false,])->getSecurePath();
+
         Shop::where('id', $request->shop_id)->update([
             "area_id" => $request->area_id,
             "category_id" => $request->category_id,
             "owner_id" => Auth::id(),
             "name" => $request->name,
             "overview" => $request->overview,
-            "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
+            "image_path" => $uploadedFileUrl,
         ]);
-
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
 
         return back();
     }
