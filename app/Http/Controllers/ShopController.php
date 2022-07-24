@@ -71,7 +71,7 @@ class ShopController extends Controller
             "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
 
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
+        Storage::disk('s3')->putFileAs('images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
 
         return back();
     }
