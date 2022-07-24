@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:8.0.2-node-browsers
+        environment:
+          - APP_DEBUG: true
+          - APP_ENV: testing
+          - DB_CONNECTION: mysql
+          - DB_DATABASE: rese_test
+          - DB_USERNAME: root
+ 
+      - image: circleci/mysql:5.7-ram
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: true
+          - MYSQL_DATABASE: rese_test
+ 
+    steps:
+      - checkout
+ 
+      - run: sudo apt update
+      - run: sudo docker-php-ext-install pdo_mysql
+
+      - run:
+          name: Install php-gd
+          command: |
+            sudo apt-get install -y libpng-dev libjpeg-dev
+            sudo docker-php-ext-configure gd --enable-gd --with-jpeg
+            sudo docker-php-ext-install  gd
+
+      - run:
+          name: Install php-bcmath
+          command: |
+            sudo docker-php-ext-install  bcmath
+ 
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+ 
+      - run: composer install -n --prefer-dist
+ 
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+ 
+      - run: echo "APP_KEY=" > .env
+      - run: php artisan key:generate
+      - run: php artisan migrate
+ 
+      - run: ./vendor/bin/phpunit
+ 
+  deploy:
+    machine:
+      image: ubuntu-2004:202201-02
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "${KEY_FINGERPRINT}"
+      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/Rese/ && git pull origin main'
+ 
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: main

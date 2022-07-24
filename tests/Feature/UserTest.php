@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use App\models\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class UserTest extends TestCase

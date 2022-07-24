@@ -5,10 +5,10 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\models\User;
-use App\models\Area;
-use App\models\Shop;
-use App\models\Category;
+use App\Models\User;
+use App\Models\Area;
+use App\Models\Shop;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Support\Facades\Hash;
 
@@ -85,9 +85,9 @@ class OwnerTest extends TestCase
                 ['role' => 2],
             ))
             ->create();
-        $response = $this->assertDatabaseHas('users',['id' => 4]);
-        $response = $this->post('/owner/delete/4');
+        $response = $this->assertDatabaseHas('users',['id' => 7]);
+        $response = $this->post('/owner/delete/7');
         $response->assertStatus(302);
-        $response = $this->assertDatabaseMissing('users',['id' => 4]);
+        $response = $this->assertDatabaseMissing('users',['id' => 7]);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Cloudinary;
 
 class ShopController extends Controller
 {
@@ -71,7 +72,11 @@ class ShopController extends Controller
             "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
 
+<<<<<<< HEAD
         Storage::disk('s3')->putFileAs('images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
+=======
+        Storage::putFileAs('public/images', $request->image_path, $request->image_path->getClientOriginalName());
+>>>>>>> a9f745781e21eb2a56fb9e329b721c5da215a4e2
 
         return back();
     }
@@ -87,7 +92,7 @@ class ShopController extends Controller
             "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
 
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
+        Storage::putFileAs('public/images', $request->image_path, $request->image_path->getClientOriginalName());
 
         return back();
     }

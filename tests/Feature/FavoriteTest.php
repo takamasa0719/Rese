@@ -5,11 +5,11 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\models\User;
-use App\models\Area;
-use App\models\Shop;
-use App\models\Category;
-use App\models\Favorite;
+use App\Models\User;
+use App\Models\Area;
+use App\Models\Shop;
+use App\Models\Category;
+use App\Models\Favorite;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class FavoriteTest extends TestCase

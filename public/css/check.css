@@ -1,0 +1,34 @@
+.check_container{
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    height: 230px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #919090;
+}
+.check_ttl{
+    font-size: 20px;
+    margin: 30px 0 20px 0;
+}
+.check_container table{
+    width: 100%;
+}
+.check_container table th{
+    width: 30%;
+    padding-bottom: 10px;
+}
+.check_container table td{
+    width: 60%;
+}
+.check_btn{
+    width: 100px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #0059ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

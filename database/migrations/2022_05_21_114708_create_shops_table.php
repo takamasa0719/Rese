@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->foreignId('area_id')->constrained('areas');
             $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('owner_id')->constrained('users');
+            $table->foreignId('owner_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->text('overview');
             $table->string('image_path');
