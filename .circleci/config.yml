@@ -26,6 +26,11 @@ jobs:
           command: |
             sudo apt-get -y install libpng-dev
             sudo docker-php-ext-install  gd
+
+      - run:
+          name: Install php-bcmath
+          command: |
+            sudo docker-php-ext-install  bcmath
  
       - restore_cache:
           keys:
