@@ -21,7 +21,11 @@ jobs:
       - run: sudo apt update
       - run: sudo docker-php-ext-install pdo_mysql
       
-      - run: Install php-gd
+      - run:
+          name: Install php-gd
+          command: |
+            sudo apt-get -y install libpng-dev
+            sudo docker-php-ext-install  gd
  
       - restore_cache:
           keys:
