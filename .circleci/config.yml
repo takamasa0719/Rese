@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.3-node-browsers
+      - image: circleci/php:7.3.0-node-browsers
         environment:
           - APP_DEBUG: true
           - APP_ENV: testing
@@ -18,7 +18,7 @@ jobs:
     steps:
       - checkout
  
-      - run: sudo apt update --allow-releaseinfo-change
+      - run: sudo apt update
       - run: sudo docker-php-ext-install pdo_mysql
  
       - restore_cache:
