@@ -38,13 +38,13 @@ class ReviewTest extends TestCase
     public function test_review()
     {
         Shop::factory()->create([
-            'area_id' => 1,
-            'category_id' => 1,
-            'owner_id' => 1,
+            'area_id' => 8,
+            'category_id' => 8,
+            'owner_id' => 11,
         ]);
         $data = [
-            "user_id" => 1,
-            "shop_id" => 1,
+            "user_id" => 11,
+            "shop_id" => 5,
             "rating" => 3,
             "review" => 'example',
         ];
@@ -58,19 +58,19 @@ class ReviewTest extends TestCase
     public function test_update()
     {
         Shop::factory()->create([
-            'area_id' => 2,
-            'category_id' => 2,
-            'owner_id' => 2,
+            'area_id' => 9,
+            'category_id' => 9,
+            'owner_id' => 12,
         ]);
         Review::factory()->create([
-            "user_id" => 2,
-            "shop_id" => 2,
+            "user_id" => 12,
+            "shop_id" => 6,
             'rating' => 2,
             'review' => 'example',
         ]);
         $data = [
-            "user_id" => 2,
-            "shop_id" => 2,
+            "user_id" => 12,
+            "shop_id" => 6,
             "rating" => 3,
             "review" => 'updated',
         ];

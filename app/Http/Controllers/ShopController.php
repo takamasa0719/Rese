@@ -72,7 +72,7 @@ class ShopController extends Controller
             "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
 
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
+        Storage::putFileAs('public/images', $request->image_path, $request->image_path->getClientOriginalName());
 
         return back();
     }
@@ -88,7 +88,7 @@ class ShopController extends Controller
             "image_path" => date('YmdHis') . $request->image_path->getClientOriginalName(),
         ]);
 
-        Storage::putFileAs('public/images', $request->image_path,  date('YmdHis') . $request->image_path->getClientOriginalName());
+        Storage::putFileAs('public/images', $request->image_path, $request->image_path->getClientOriginalName());
 
         return back();
     }

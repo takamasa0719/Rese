@@ -85,9 +85,9 @@ class OwnerTest extends TestCase
                 ['role' => 2],
             ))
             ->create();
-        $response = $this->assertDatabaseHas('users',['id' => 4]);
-        $response = $this->post('/owner/delete/4');
+        $response = $this->assertDatabaseHas('users',['id' => 7]);
+        $response = $this->post('/owner/delete/7');
         $response->assertStatus(302);
-        $response = $this->assertDatabaseMissing('users',['id' => 4]);
+        $response = $this->assertDatabaseMissing('users',['id' => 7]);
     }
 }

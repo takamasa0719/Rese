@@ -42,8 +42,12 @@ class ShopTest extends TestCase
                 ['role' => 2],
             ))
             ->create();
-        Shop::factory()->create();
-        $response = $this->get('/detail/1');
+        Shop::factory()->create([
+            'area_id' => 10,
+            'category_id' => 10,
+            'owner_id' => 13,
+        ]);
+        $response = $this->get('/detail/7');
         $response->assertViewIs('detail');
         $response->assertViewHas(['shops', 'courses']);
         $response->assertStatus(200);
@@ -59,13 +63,13 @@ class ShopTest extends TestCase
             ))
             ->create();
         Shop::factory()->create([
-            'area_id' => 2,
-            'category_id' => 2,
-            'owner_id' => 2,
+            'area_id' => 11,
+            'category_id' => 11,
+            'owner_id' => 14,
         ]);
         $response = $this->get('/search', [
-            'area_id' => 2,
-            'category_id' => 2,
+            'area_id' => 11,
+            'category_id' => 11,
             'keyword' => '仙人',
         ]);
         $response->assertViewIs('index');
@@ -85,9 +89,9 @@ class ShopTest extends TestCase
         $this->actingAs($user);
         Storage::fake('local');
         $data = [
-            "area_id" => 3,
-            "category_id" => 3,
-            "owner_id" => 3,
+            "area_id" => 12,
+            "category_id" => 12,
+            "owner_id" => 15,
             "name" => 'example',
             "overview" => 'example',
             "image_path" => UploadedFile::fake()->image('example.jpg'),
@@ -109,21 +113,21 @@ class ShopTest extends TestCase
             ->create();
         $this->actingAs($user);
         Shop::factory()->create([
-            'area_id' => 4,
-            'category_id' => 4,
-            'owner_id' => 4,
+            'area_id' => 13,
+            'category_id' => 13,
+            'owner_id' => 16,
         ]);
         Storage::fake('local');
         $data = [
-            "area_id" => 4,
-            "category_id" => 4,
-            "owner_id" => 4,
+            "area_id" => 13,
+            "category_id" => 13,
+            "owner_id" => 16,
             "name" => 'updated',
             "overview" => 'updated',
             "image_path" => UploadedFile::fake()->image('update.jpg'),
         ];
         Storage::disk('local')->assertMissing('public/images/update.jpg');
-        $response = $this->post('/shop/update/4', $data);
+        $response = $this->post('/shop/update/10', $data);
         $response->assertStatus(302);
         $response = $this->assertDatabaseHas('shops',['name' => 'updated']);
         Storage::disk('local')->assertExists('public/images/update.jpg');

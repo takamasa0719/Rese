@@ -46,12 +46,12 @@ class ReservationTest extends TestCase
         Area::factory()->create();
         Category::factory()->create();
         Shop::factory()->create([
-            'area_id' => 1,
-            'category_id' => 1,
-            'owner_id' => 2,
+            'area_id' => 6,
+            'category_id' => 6,
+            'owner_id' => 9,
         ]);
         Course::factory()->create([
-            'shop_id' => 1,
+            'shop_id' => 3,
             'name' => 'コースB',
             'amount' => '3500',
         ]);
@@ -72,12 +72,12 @@ class ReservationTest extends TestCase
         Area::factory()->create();
         Category::factory()->create();
         Shop::factory()->create([
-            'area_id' => 2,
-            'category_id' => 2,
-            'owner_id' => 3,
+            'area_id' => 7,
+            'category_id' => 7,
+            'owner_id' => 10,
         ]);
         Course::factory()->create([
-            'shop_id' => 2,
+            'shop_id' => 4,
             'name' => 'コースB',
             'amount' => '3500',
         ]);
@@ -85,16 +85,16 @@ class ReservationTest extends TestCase
             'date' => '2024-01-01',
             'time' => '11:30',
             'number' => 1,
-            'user_id' => 3,
-            'shop_id' => 2,
+            'user_id' => 10,
+            'shop_id' => 4,
             'course_id' => 2,
         ]);
         $data = [
             'date' => '2024-01-01',
             'time' => '12:30',
             'number' => 3,
-            'user_id' => 3,
-            'shop_id' => 2,
+            'user_id' => 10,
+            'shop_id' => 4,
         ];
         $response = $this->assertDatabaseMissing('reservations', $data);
         $response = $this->post('/reserve/update/1', $data);
