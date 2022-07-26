@@ -14,7 +14,7 @@
         <input type="date" class="form_date" name="date" id="date" onChange="inputDate()"><br>
         <input type="time" class="form_time" step="900" id="time" name="time"  onChange="inputTime()"><br>
         <input type="number" class="form_number" step="1" id="number" name="number" min="1" max="20" placeholder="人数" onChange="inputNumber()">
-        <select name="course_id" id="course" onChange="inputCourse()">
+        <select name="course_id" id="course" onChange="inputCourse()" required>
             <option value="">コースを選択してください</option>
             @foreach($courses as $course)
             <option value="{{$course->id}}">{{$course->name}}　　{{$course->amount}}JPY</option>

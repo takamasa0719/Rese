@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('shop_id')->constrained('shops');
-            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('course_id')->nullable()->constrained('courses');
             $table->unique(['user_id', 'shop_id'], 'unique_user_id_shop_id');
             $table->date('date');
             $table->time('time');

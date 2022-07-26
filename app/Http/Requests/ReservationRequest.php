@@ -27,7 +27,6 @@ class ReservationRequest extends FormRequest
             'date' => 'required|date_format:Y-m-d|after:today',
             'time' => 'required|date_format:H:i',
             'number' => 'required|numeric|min:1',
-            'course' => 'required'
         ];
     }
 }

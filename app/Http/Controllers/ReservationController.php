@@ -24,7 +24,19 @@ class ReservationController extends Controller
         $shop_id = $request->shop_id;
         $course = Course::where('id', $request->course_id)->first();
 
-        return view('payment', compact(['name', 'date', 'time','number','shop_id', 'course']));
+        if(isset($course)){
+            return view('payment', compact(['name', 'date', 'time','number','shop_id', 'course']));
+        }else{
+            Reservation::create([
+                "user_id" => Auth::id(),
+                "shop_id" => $request->shop_id,
+                "date" => $request->date,
+                "time" => $request->time,
+                "number" => $request->number,
+            ]);
+        }
+
+        
     }
 
     public function update(ReservationRequest $request)
