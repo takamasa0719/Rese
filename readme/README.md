@@ -18,7 +18,8 @@
 
 ## 1.URL
 
-未定
+AWS: ec2-13-230-211-2.ap-northeast-1.compute.amazonaws.com
+heroku: https://develop-rese-app.herokuapp.com/
 
 ## 2.概要
 ある企業のグループ会社の飲食店予約サービス
@@ -141,11 +142,32 @@
 | id         | unsigned bigint       | 予約を識別するID        |
 | user_id    | unsigned bigint       | 予約したユーザーのid    |
 | shops_id   | unsigned bigint       | 予約した店舗のid        |
+| course_id  | unsigned bigint       | 予約したコースのid      |
 | date       | date       | 予約の日付              |
 | time       | time       | 予約の時刻              |
 | number     | tinyint       | 予約の人数              |
 | created_at | timestamp | 作成日時                |
 | updated_at | timestamp | 更新日時                |
-
+#### reviewsテーブル
+評価を管理する。usersテーブルとshopsテーブルを紐付ける中間テーブル。
+| カラム名    | 属性       | 役割                   |
+|:-----------|:-----------|:-----------------------|
+| id         | unsigned bigint       | 予約を識別するID        |
+| user_id    | unsigned bigint       | 予約したユーザーのid    |
+| shops_id   | unsigned bigint       | 予約した店舗のid        |
+| rating      | tinyint            | 評価（★）              |
+| review       | varchar(255)       | 評価内容             |
+| created_at | timestamp | 作成日時                |
+| updated_at | timestamp | 更新日時                |
+#### coursesテーブル
+コースを管理する。
+| カラム名    | 属性       | 役割                   |
+|:-----------|:-----------|:-----------------------|
+| id         | unsigned bigint       | 予約を識別するID        |
+| shops_id   | unsigned bigint       | 予約した店舗のid        |
+| name      | varchar(255)            | コース名              |
+| amount       | integer       | コースの値段             |
+| created_at | timestamp | 作成日時                |
+| updated_at | timestamp | 更新日時                |
 
 ##### [↑ページトップへ](https://github.com/takamasa0719/Rese)

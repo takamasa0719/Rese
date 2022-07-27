@@ -56,7 +56,7 @@
         <button class="return_btn" type="button" onClick="history.back()">＜</button>
     </form>
     <p class="shop_name">{{ $shops[0]->name }}</p>
-    <img class="shop_image" src="{{ asset($shops[0]->image_path) }}">
+    <img class="shop_image" src="{{ asset('storage/images/' . $shops[0]->image_path) }}">
     <p class="shop_area">#{{ $shops[0]->area->name }}</p>
     <p class="shop_category">#{{ $shops[0]->category->name }}</p>
     <p class="shop_overview">{{ $shops[0]->overview }}</p>
